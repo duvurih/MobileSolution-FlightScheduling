@@ -1,0 +1,76 @@
+<ion-content padding>
+  <div padding> 
+  <ion-segment [(ngModel)]="isSelected">
+    <ion-segment-button value="1">
+      Gate A
+    </ion-segment-button>
+    <ion-segment-button value="2">
+      Gate B
+    </ion-segment-button>
+    <ion-segment-button value="3">
+      Cancelled
+    </ion-segment-button>    
+  </ion-segment>
+</div>
+
+<div [ngSwitch]="isSelected">
+  <ion-list *ngSwitchCase="'1'">
+    <ion-item color="primary">
+      <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    </ion-item>
+    <ion-item *ngFor="let flight of (flights | filter: {GateID:1})" >
+      <ion-icon name="ios-plane" color="primary" isActive="true" item-start large *ngIf="!flight.CancellationStatus" ></ion-icon>
+      <ion-icon name="md-close-circle" color="danger" isActive="false" item-start large *ngIf="flight.CancellationStatus" ></ion-icon>
+      <ion-label class="text-size-small">{{flight.FlightName}}</ion-label>
+      <ion-label class="text-size-small">
+        <i [class.flight-scheduled]="!flight.CancellationStatus" [class.flight-cancelled]="flight.CancellationStatus">
+          {{!flight.CancellationStatus?"Seheduled":"Cancelled"}}
+        </i>
+      </ion-label>
+      <ion-toggle [(ngModel)]="!flight.CancellationStatus" ng-checked="!flight.CancellationStatus" color="blue" (ionChange)="flightStatusChange(flight)"></ion-toggle>
+      <ion-select [(ngModel)]="flight.FlightName"  interface="action-sheet">
+          <ion-option value="flight.FlightID">Flight ID: {{flight.FlightID}}</ion-option>
+          <ion-option value="flight.FlightName">Flight Name: {{flight.FlightName}}</ion-option>
+          <ion-option value="flight.ArrivalTime">Arrival Time: {{flight.ArrivalTime | date:'medium'}}</ion-option>
+          <ion-option value="flight.DepartureTime">Departure Time: {{flight.DepartureTime | date:'medium'}}</ion-option>
+      </ion-select>
+    </ion-item>    
+  </ion-list>
+
+  <ion-list *ngSwitchCase="'2'">
+    <ion-item color="primary">
+      <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    </ion-item>    
+    <ion-item *ngFor="let flight of (flights | filter: {GateID:2})">
+      <ion-icon name="ios-plane" color="primary" isActive="true" item-start large *ngIf="!flight.CancellationStatus" ></ion-icon>
+      <ion-icon name="md-close-circle" color="danger" isActive="false" item-start large *ngIf="flight.CancellationStatus" ></ion-icon>
+      <ion-label class="text-size-small">{{flight.FlightName}}</ion-label>
+      <ion-label class="text-size-small">
+        <i [class.flight-scheduled]="!flight.CancellationStatus" [class.flight-cancelled]="flight.CancellationStatus">
+          {{!flight.CancellationStatus?"Seheduled":"Cancelled"}}
+        </i>
+      </ion-label>
+      <ion-toggle [(ngModel)]="!flight.CancellationStatus" ng-checked="!flight.CancellationStatus" color="blue" (ionChange)="flightStatusChange(flight)"></ion-toggle>
+      <ion-select [(ngModel)]="flight.FlightName"  interface="action-sheet">
+          <ion-option value="flight.FlightID">Flight ID: {{flight.FlightID}}</ion-option>
+          <ion-option value="flight.FlightName">Flight Name: {{flight.FlightName}}</ion-option>
+          <ion-option value="flight.ArrivalTime">Arrival Time: {{flight.ArrivalTime | date:'medium'}}</ion-option>
+          <ion-option value="flight.DepartureTime">Departure Time: {{flight.DepartureTime | date:'medium'}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngSwitchCase="'3'">
+    <ion-item *ngFor="let flight of (flights | filter: {CancellationStatus: true})">
+      <ion-icon name="ios-plane" color="primary" isActive="true" item-start large *ngIf="!flight.CancellationStatus" ></ion-icon>
+      <ion-icon name="md-close-circle" color="danger" isActive="false" item-start large *ngIf="flight.CancellationStatus" ></ion-icon>
+      <ion-label class="text-size-small">{{flight.FlightName}}</ion-label>
+      <ion-label class="text-size-small">
+        <i [class.flight-scheduled]="!flight.CancellationStatus" [class.flight-cancelled]="flight.CancellationStatus">
+          {{!flight.CancellationStatus?"Seheduled":"Cancelled"}}
+        </i>
+      </ion-label>
+    </ion-item>
+  </ion-list>  
+</div>
+</ion-content>

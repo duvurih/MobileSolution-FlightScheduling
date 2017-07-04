@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Flight Scheduling App</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="tutorial-page">
+  <ion-slides pager>
+
+    <ion-slide style="background-color:white">
+      <page-dashboard [flights]="flights" [gates]="gates"></page-dashboard>
+    </ion-slide>
+
+    <ion-slide style="background-color: white">
+      <page-flight-schedule [flights]="flights" [gates]="gates"></page-flight-schedule>
+    </ion-slide>
+
+    <ion-slide style="background-color: white">
+      <h2>Slide 3</h2>
+    </ion-slide>
+
+  </ion-slides>
+
+</ion-content>

@@ -1,0 +1,46 @@
+page-dashboard {
+  .flight-icon-green{
+    color:green;
+  }
+
+  .flight-icon-orange{
+    color:orangered;
+  }
+
+  .card-background-page {
+
+    ion-card {
+      position: relative;
+      text-align: center;
+      margin:0px;
+      padding:0px;
+    }
+
+    .card-title {
+      font-size: 0.8em;
+      width: 100%;
+      font-weight: bold;
+      color:black;
+    }
+
+    .card-subtitle {
+      font-size: 0.8em;
+      position: absolute;
+      top: 52%;
+      width: 100%;
+      color: #fff;
+    }
+
+    .round-image {
+        height: 18vw; 
+        width: 18vw; 
+        border: 2px solid #344;
+        border-radius: 50%;
+        box-shadow: 2px 2px 2px gray;
+        display: inline-block;
+        margin-left: auto;
+        margin-right: auto;
+    }     
+
+  }  
+}
