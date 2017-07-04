@@ -3,7 +3,7 @@
 # Deployed in Amazon AWS
 - Servies are deployed in Amazon AWS
 
-# Mobile View:
+# Mobile App:
 
 ![alt text](https://github.com/duvurih/MobileSolution-FlightScheduling/blob/master/src/assets/img/MobileApp.gif)
 
