@@ -1,0 +1,14 @@
+
+<ion-card>
+    <ion-item color="light">
+        <ion-slides pager loop slidesPerView="3" initialSlide=1 paginationType='progress'    >
+            <ion-slide class="card-background-page" *ngFor="let flight of flights">
+                <ion-card class="round-image">
+                    <ion-icon name="flag" class="flight-icon-green" item-start large *ngIf="flight.CancellationStatus==false"></ion-icon>
+                    <ion-icon name="flag" color="danger" item-start large *ngIf="flight.CancellationStatus==true"></ion-icon>
+                    <div class="card-title">{{flight.FlightName}}</div>
+                </ion-card>
+            </ion-slide>
+        </ion-slides>      
+    </ion-item>    
+</ion-card>

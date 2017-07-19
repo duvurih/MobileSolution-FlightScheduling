@@ -1,52 +1,53 @@
 <ion-content>
-<ion-card>
-  <img src="assets/img/flight.jpg" class="img-responsive">
-  <ion-fab right top>
-    <button ion-fab>
-      <ion-icon name="pin"></ion-icon>
-    </button>
-  </ion-fab>
+  
   <ion-card>
-   <ion-item color="primary">
-      <ion-slides slidesPerView=3 paginationType="progress">
-        <ion-slide class="card-background-page" *ngFor="let flight of flights">
-          <ion-card class="round-image">
-            <ion-icon name="flag" class="flight-icon-green" item-start large *ngIf="flight.CancellationStatus==false"></ion-icon>
-            <ion-icon name="flag" color="danger" item-start large *ngIf="flight.CancellationStatus==true"></ion-icon>
-            <div class="card-title">{{flight.FlightName}}</div>
-          </ion-card>
-        </ion-slide>
-      </ion-slides>      
-    </ion-item>    
-  </ion-card>
-  <ion-item-group>
-    <ion-item-divider color="primary">Gate A</ion-item-divider>
-    <ion-item>
-      <ion-icon name="flag" class="flight-icon-green" item-start large></ion-icon>
-      <h3>Scheduled Flights: {{(flights | filter:{GateID:1})?.length}}</h3>
-      <h4>Cancelled Flights: {{(flights | filter:{GateID:1,CancellationStatus:true})?.length}}</h4>
-      <p>North Wing Gate</p>
-    </ion-item>
-  </ion-item-group>
-  <ion-item-group>
-    <ion-item-divider color="primary">Gate B</ion-item-divider>
-    <ion-item>
-      <ion-icon name="flag" class="flight-icon-orange" item-left large ></ion-icon>
-      <h3>Scheduled Flights: {{(flights | filter:{GateID:2})?.length}}</h3>
-      <h4>Scheduled Flights: {{(flights | filter:{GateID:2,CancellationStatus:true})?.length}}</h4>
-      <p>South Wing Gate</p>
-    </ion-item>
-  </ion-item-group>
-  <ion-item-group>
-    <ion-item-divider color="light">Information</ion-item-divider>
-    <ion-item>
-      <span item-left>18 min</span>
-      <span item-left>(2.6 mi)</span>
-      <button ion-button icon-left clear item-end>
-        <ion-icon name="navigate"></ion-icon>
-        Start
+    <img src="assets/img/flight.jpg" class="img-responsive" id="mainimage"/>
+    <ion-fab right top>
+      <button ion-fab>
+        <ion-icon name="pin"></ion-icon>
       </button>
-    </ion-item>
-  </ion-item-group>
-</ion-card>
+    </ion-fab>
+  </ion-card>
+
+  <flight-status-slide [flights]="flights"></flight-status-slide>
+  
+  <ion-card>  
+    <ion-slides pager>
+      <ion-slide>
+        <ion-item-group>
+          <ion-item-divider color="primary">Gate A - North Wing</ion-item-divider>
+          <ion-item>
+            <ion-icon name="flag" class="flight-icon-green" item-start large></ion-icon>
+            <h4>Scheduled Flights: {{(flights | filter:{GateID:1})?.length}}</h4>
+            <h4>Cancelled Flights: {{(flights | filter:{GateID:1,CancellationStatus:true})?.length}}</h4>
+          </ion-item>
+        </ion-item-group>
+      </ion-slide>
+      <ion-slide>
+        <ion-item-group>
+          <ion-item-divider color="primary">Gate B - South Wing</ion-item-divider>
+          <ion-item>
+            <ion-icon name="flag" class="flight-icon-orange" item-left large ></ion-icon>
+            <h4>Scheduled Flights: {{(flights | filter:{GateID:2})?.length}}</h4>
+            <h4>Cancelled Flights: {{(flights | filter:{GateID:2,CancellationStatus:true})?.length}}</h4>
+          </ion-item>
+        </ion-item-group>        
+      </ion-slide>
+    </ion-slides>
+  </ion-card>
+  
+  <ion-card>
+    <ion-item-group>
+      <ion-item-divider color="secondary">Information</ion-item-divider>
+      <ion-item>
+        <span item-left>18 min</span>
+        <span item-left>(2.6 mi)</span>
+        <button ion-button icon-left clear item-end>
+          <ion-icon name="navigate"></ion-icon>
+          Start
+        </button>
+      </ion-item>
+    </ion-item-group>
+  </ion-card>
+
 </ion-content>

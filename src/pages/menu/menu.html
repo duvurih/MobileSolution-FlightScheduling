@@ -1,0 +1,84 @@
+
+ <!--     <ion-tabs class="tabs-top tabs-positive has-header">
+        <ion-tab title="Home">
+              <div class="list">
+                <label class="item item-input item-stacked-label">
+                  <span class="input-label">First Name</span>
+                  <input  type="text" placeholder="Fulan">
+                </label>
+                <label class="item item-input item-stacked-label">
+                  <span class="input-label">Last Name</span>
+                  <input  type="text" placeholder="bin fulan">
+                </label>
+              </div>
+        </ion-tab>
+        <ion-tab title="About" >
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel hendrerit arcu. Cras a mi nisi. Nam euismod massa eget ex viverra pellentesque. Mauris ultricies a urna eu facilisis. Sed eu malesuada turpis. Morbi ultrices vulputate enim, ut
+                sagittis odio blandit in. Vivamus in dictum turpis, ac faucibus felis.
+              </p>
+        </ion-tab>
+        <ion-tab title="Contact">
+              <ul class="list">
+                <li class="item">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </li>
+                <li class="item">
+                  Morbi dapibus tortor a turpis pulvinar iaculis.
+                </li>
+                <li class="item">
+                  Praesent eget mi vel lectus gravida malesuada eu vel ipsum.
+                </li>
+                <li class="item">
+                  Donec at quam blandit, venenatis augue non, lacinia nisi.
+                </li>
+                <li class="item">
+                  Vestibulum sit amet sapien eget ipsum mattis efficitur.
+                </li>
+              </ul>
+        </ion-tab>
+
+      </ion-tabs>
+    -->
+  <ion-header>
+    <ion-navbar>
+      <ion-title>Menu</ion-title>
+      <ion-buttons end>
+        <button ion-button (click)="closeModal()">Close</button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  <ion-content>
+    <div padding>
+      <ion-segment [(ngModel)]="pet">
+        <ion-segment-button value="kittens">
+          Kittens
+        </ion-segment-button>
+        <ion-segment-button value="puppies">
+          Puppies
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+
+    <div [ngSwitch]="pet">
+      <ion-list *ngSwitchCase="'puppies'">
+        <ion-item>
+          <ion-thumbnail item-start>
+            <img src="img/thumbnail-puppy-1.jpg">
+          </ion-thumbnail>
+          <h2>Ruby</h2>
+        </ion-item>
+        ...
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'kittens'">
+        <ion-item>
+          <ion-thumbnail item-start>
+            <img src="img/thumbnail-kitten-1.jpg">
+          </ion-thumbnail>
+          <h2>Luna</h2>
+        </ion-item>
+        ...
+      </ion-list>
+    </div>
+  </ion-content>
